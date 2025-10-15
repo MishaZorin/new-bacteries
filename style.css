@@ -6,3 +6,11 @@ body{
 canvas{
     display: block;
 }
+#restart{
+    display: block;
+    color: white;
+    padding: 30px;
+    background-color: blue;
+    border: 2 px solid gray;
+    border-radius: 5px;
+}
