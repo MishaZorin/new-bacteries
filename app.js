@@ -3,6 +3,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+let restart = document.getElementById('restart')
 let bacterias = []
 let enemy = []
 let foods = []
@@ -12,16 +13,16 @@ function Bacteria(x, y) {
     this.x = x
     this.y = y
     this.energy = 100
+    if (this.energy == 0) {
+
+    }
     this.divide = function () {
         if (this.energy > 150) {
             this.energy = 75
             bacterias.push(new Bacteria(this.x, this.y))
 
         }
-        if(this.energy == 0){
-            this.color ="gray"
-             bacterias.push(new Bacteria(this.x, this.y))
-        }
+
     }
 
     this.update = function () {
@@ -71,7 +72,7 @@ function Bacteria(x, y) {
             let angle = Math.atan2(
                 closestFood.y - this.y,
                 closestFood.x - this.x
-                
+
 
             )
             this.x += Math.cos(angle) * this.speed
@@ -81,7 +82,7 @@ function Bacteria(x, y) {
         else {
             this.x += Math.cos(this.direction) * this.speed
             this.y += Math.sin(this.direction) * this.speed
-            
+
 
         }
         if (this.x > canvas.width || this.x < 0) {
@@ -159,13 +160,17 @@ function Food(x, y) {
     }
 
 }
-if(bacterias.length === 0){
-    for (let i = 0; i < 10; i++) {
-    bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
-}
+if (bacterias.length == 0) {
+    restart.display = "block"
+    restart.addEventListener("click", function () {
+        animate()
+    })
+    
 
 }
-for (let i = 0; i < 3; i++) {
+
+
+for (let i = 0; i < 9; i++) {
     enemy.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
@@ -189,7 +194,7 @@ canvas.addEventListener("click", function (event) {
 
 })
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 2; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
