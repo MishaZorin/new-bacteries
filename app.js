@@ -10,6 +10,7 @@ let foods = []
 
 
 function Bacteria(x, y) {
+
     this.x = x
     this.y = y
     this.energy = 100
@@ -122,8 +123,25 @@ function Enemy(x, y) {
             if (dist < this.radius + k.radius) {
                 this.energy += 50
                 bacterias.splice(i, 1)
+                if (bacterias.length == 0) {
+                    restart.style.display = "block"
+                    restart.addEventListener("click", function () {
+                        for (let i = 0; i < 10; i++) {
+                            bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
+                        }
+
+                        for (let i = 0; i < 9; i++) {
+
+                            enemy.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height))
+                        }
+                    })
+
+
+                }
+
 
             }
+
         }
     }
     this.move = function () {
@@ -160,17 +178,11 @@ function Food(x, y) {
     }
 
 }
-if (bacterias.length == 0) {
-    restart.display = "block"
-    restart.addEventListener("click", function () {
-        animate()
-    })
-    
 
-}
 
 
 for (let i = 0; i < 9; i++) {
+
     enemy.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
@@ -194,7 +206,7 @@ canvas.addEventListener("click", function (event) {
 
 })
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 10; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
