@@ -130,13 +130,13 @@ function Enemy(x, y) {
                             bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
                         }
 
-                        for (let i = 0; i < 9; i++) {
-
-                            enemy.push(new Enemy(Math.random() * canvas.width, Math.random() * canvas.height))
-                        }
+                        
                     })
 
 
+                }
+                else{
+                    restart.style.display = 'none'
                 }
 
 
@@ -206,7 +206,7 @@ canvas.addEventListener("click", function (event) {
 
 })
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 1; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
