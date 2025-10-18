@@ -206,7 +206,7 @@ canvas.addEventListener("click", function (event) {
 
 })
 
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 10; i++) {
     bacterias.push(new Bacteria(Math.random() * canvas.width, Math.random() * canvas.height))
 }
 
